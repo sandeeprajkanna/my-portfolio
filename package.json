@@ -13,7 +13,6 @@
     "flag-icon-css": "^4.1.7",
     "formik": "^2.2.9",
     "framer-motion": "^7.2.0",
-    "gh-pages": "^4.0.0",
     "i18next": "^21.9.1",
     "i18next-browser-languagedetector": "^6.1.5",
     "js-cookie": "^3.0.1",
@@ -52,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
