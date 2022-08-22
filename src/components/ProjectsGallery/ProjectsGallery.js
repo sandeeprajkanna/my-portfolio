@@ -40,7 +40,7 @@ const ProjectsGallery = () => {
     loadProjects();
   }, []);
 
-  console.log("loadedProjects after pageNo: ", pageNo, " pageSize: ", pageSize);
+  console.log('loadedProjects after pageNo: ', pageNo,' pageSize: ', pageSize);
   console.log(loadedProjects);
   return (
     <>

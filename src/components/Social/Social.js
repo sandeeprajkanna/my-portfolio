@@ -7,117 +7,73 @@ import DarkModeSwitcher from "../DarkModeSwitcher";
 import loaderContext from "../../contexts/loaderContext";
 
 const Social = ({ mobile }) => {
-  const classes = useStyles();
-  const { isLoading } = useContext(loaderContext);
-  const controls = useAnimation();
+    const classes = useStyles();
+    const { isLoading } = useContext(loaderContext);
+    const controls = useAnimation();
 
-  useEffect(() => {
-    if (!isLoading) {
-      controls.start((i) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: 1.8 + i * 0.1,
-        },
-      }));
+    useEffect(() => {
+        if (!isLoading) {
+            controls.start(i=>({
+                opacity: 1,
+                y: 0,
+                transition: {
+                    delay: 1.8+(i*0.1),
+                },
+            }));
+        } else {
+            controls.start({ opacity: 0, y: 0 });
+        }
+    }, [isLoading, controls]);
+
+    if (mobile) {
+        return (
+            <div className={classes.mobileWrapper}>
+                <IconBtn icon={GitHub} m={1} href="https://github.com/sandeeprajkanna" />
+                <IconBtn icon={Instagram} m={1} href="https://www.instagram.com/sandeeprajkanna/" />
+                <IconBtn icon={LinkedIn} m={1} href="https://www.linkedin.com/in/sandeep-raj-kanna-24283b220/" />
+                <IconBtn icon={Email} m={1} href="mailto:sandeepraj5254@gmail.com" />
+            </div>
+        );
     } else {
-      controls.start({ opacity: 0, y: 0 });
+        return (
+            <motion.div className={classes.wrapper}>
+                <motion.div animate={controls} custom={0} className={classes.socialIcon}>
+                    <IconBtn icon={GitHub} m={1} href="https://github.com/sandeeprajkanna" />
+                </motion.div>
+                <motion.div animate={controls} custom={1} className={classes.socialIcon}>
+                    <IconBtn icon={Instagram} m={1} href="https://www.instagram.com/sandeeprajkanna/" />
+                </motion.div>
+                <motion.div animate={controls} custom={2} className={classes.socialIcon}>
+                    <IconBtn icon={LinkedIn} m={1} href="https://www.linkedin.com/in/sandeep-raj-kanna-24283b220/" />
+                </motion.div>
+                <motion.div animate={controls} custom={3} className={classes.socialIcon}>
+                    <IconBtn icon={Email} m={1} href="mailto:sandeepraj5254@gmail.com" />
+                </motion.div>
+                <motion.div animate={controls} custom={4} className={classes.socialIcon}>
+                    <DarkModeSwitcher />
+                </motion.div>
+            </motion.div>
+        );
     }
-  }, [isLoading, controls]);
-
-  if (mobile) {
-    return (
-      <div className={classes.mobileWrapper}>
-        <IconBtn
-          icon={GitHub}
-          m={1}
-          href="https://github.com/sandeeprajkanna"
-        />
-        <IconBtn
-          icon={Instagram}
-          m={1}
-          href="https://www.instagram.com/sandeeprajkanna/"
-        />
-        <IconBtn
-          icon={LinkedIn}
-          m={1}
-          href="https://www.linkedin.com/in/sandeep-raj-kanna-24283b220/"
-        />
-        <IconBtn icon={Email} m={1} href="mailto:sandeepraj5254@gmail.com" />
-      </div>
-    );
-  } else {
-    return (
-      <motion.div className={classes.wrapper}>
-        <motion.div
-          animate={controls}
-          custom={0}
-          className={classes.socialIcon}
-        >
-          <IconBtn
-            icon={GitHub}
-            m={1}
-            href="https://github.com/sandeeprajkanna"
-          />
-        </motion.div>
-        <motion.div
-          animate={controls}
-          custom={1}
-          className={classes.socialIcon}
-        >
-          <IconBtn
-            icon={Instagram}
-            m={1}
-            href="https://www.instagram.com/sandeeprajkanna/"
-          />
-        </motion.div>
-        <motion.div
-          animate={controls}
-          custom={2}
-          className={classes.socialIcon}
-        >
-          <IconBtn
-            icon={LinkedIn}
-            m={1}
-            href="https://www.linkedin.com/in/sandeep-raj-kanna-24283b220/"
-          />
-        </motion.div>
-        <motion.div
-          animate={controls}
-          custom={3}
-          className={classes.socialIcon}
-        >
-          <IconBtn icon={Email} m={1} href="mailto:sandeepraj5254@gmail.com" />
-        </motion.div>
-        <motion.div
-          animate={controls}
-          custom={4}
-          className={classes.socialIcon}
-        >
-          <DarkModeSwitcher />
-        </motion.div>
-      </motion.div>
-    );
-  }
 };
 
 const useStyles = makeStyles((theme) => ({
-  socialIcon: {
-    marginBottom: "5px",
-  },
-  wrapper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    position: "fixed",
-    bottom: 0,
-    right: 0,
-    padding: theme.spacing(2),
-    zIndex: 100,
-  },
-  mobileWrapper: {
-    display: "flex",
-  },
+    socialIcon: {
+        marginBottom: '5px'
+    },
+    wrapper: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-end",
+        position: "fixed",
+        bottom: 0,
+        right: 0,
+        padding: theme.spacing(2),
+        zIndex: 100,
+    },
+    mobileWrapper: {
+        display: "flex",
+    },
 }));
 
 export default Social;
